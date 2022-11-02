@@ -62,12 +62,14 @@ const linkedlist = () => {
   };
 
   //returns ture if the value is in the list and false if it does not exist in the linked list
-  const contains = (value) => {
-    let currentNode = head();
-    if (currentNode.value === value) {
-      return true;
-    } else {
+  const contains = (value, currentNode = getHead()) => {
+    if (currentNode === null) {
+      return false;
+    } else if (currentNode.value !== value) {
       currentNode = currentNode.nextNode;
+      return contains(value, currentNode);
+    } else {
+      return true;
     }
   };
 
