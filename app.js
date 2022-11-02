@@ -67,6 +67,24 @@ const linkedlist = () => {
     return null;
   };
 
+  //prints out the entire linked list as a string of values
+  const toString = () => {
+    let currentNode = getHead();
+    let output = ``;
+    if (getHead() === null) {
+      return (output = `null`);
+    } else {
+      while (currentNode !== null) {
+        output += `(${currentNode.value}) -> `;
+        currentNode = currentNode.nextNode;
+      }
+      if (currentNode === null) {
+        output += `(null)`;
+      }
+      return output;
+    }
+  };
+
   //remove last element from list
   const pop = () => {
     let currentNode = at(getLength() - 2);
@@ -114,6 +132,7 @@ const linkedlist = () => {
     pop,
     contains,
     find,
+    toString,
   };
 };
 
