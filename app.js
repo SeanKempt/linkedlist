@@ -25,6 +25,7 @@ const linkedlist = () => {
     return length;
   };
 
+  //add value to end of linked list
   const append = (value) => {
     const newNode = node(value);
     if (head === null) {
@@ -40,6 +41,7 @@ const linkedlist = () => {
     length++;
   };
 
+  //returns value at the provided index
   const at = (index) => {
     let currentNode = getHead();
     if (index <= getLength()) {
@@ -105,6 +107,7 @@ const linkedlist = () => {
     }
   };
 
+  //add value to the beginning of linked list
   const prepend = (value) => {
     const newNode = node(value);
     if (head === null) {
