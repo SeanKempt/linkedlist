@@ -42,11 +42,33 @@ const linkedlist = () => {
 
   const at = (index) => {
     let currentNode = getHead();
-    //what should this do if the number is greater than the number of index possible? Need a solution
-    for (let i = 0; i < index; i++) {
+    if (index <= getLength()) {
+      for (let i = 0; i < index; i++) {
+        currentNode = currentNode.nextNode;
+      }
+    } else {
+      return `Length of linked list is lower than index! Try again!`;
+    }
+
+    return currentNode;
+  };
+
+  //remove last element from list
+  const pop = () => {
+    let currentNode = at(getLength() - 2);
+    length--;
+    currentNode.nextNode = null;
+    return currentNode;
+  };
+
+  //returns ture if the value is in the list and false if it does not exist in the linked list
+  const contains = (value) => {
+    let currentNode = head();
+    if (currentNode.value === value) {
+      return true;
+    } else {
       currentNode = currentNode.nextNode;
     }
-    return currentNode;
   };
 
   const prepend = (value) => {
@@ -65,7 +87,17 @@ const linkedlist = () => {
     length++;
   };
 
-  return { append, head, getHead, getLength, prepend, getTail, at };
+  return {
+    append,
+    head,
+    getHead,
+    getLength,
+    prepend,
+    getTail,
+    at,
+    pop,
+    contains,
+  };
 };
 
 const testList = linkedlist();
