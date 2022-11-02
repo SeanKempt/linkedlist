@@ -49,8 +49,22 @@ const linkedlist = () => {
     } else {
       return `Length of linked list is lower than index! Try again!`;
     }
-
     return currentNode;
+  };
+
+  //returns index of where the value is found, otherwise return null
+  const find = (value, currentNode = getHead(), index = 0) => {
+    let length = getLength();
+    while (index < length) {
+      if (currentNode.value !== value) {
+        currentNode = currentNode.nextNode;
+        index++;
+        return find(value, currentNode, index);
+      } else if (currentNode.value === value) {
+        return index;
+      }
+    }
+    return null;
   };
 
   //remove last element from list
@@ -99,6 +113,7 @@ const linkedlist = () => {
     at,
     pop,
     contains,
+    find,
   };
 };
 
